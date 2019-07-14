@@ -4,9 +4,9 @@ import LikesButtun from './components/LikesButtun'
 import CommentBox from './components/CommentBox'
 
 /**
- * component's life circle：when create、update、unload
- * callback functions：
- * create：construtor,rander,componentDidMount, react update DOM and refs 
+ * Component's life cycle：when create、update、unload
+ * Callback functions：
+ * create：construtor,render,componentDidMount, react update DOM and refs 
  * update: render(when new props,setState,forceUpdate),componentDidUpdate, react update DOM and refs 
  * unload: componentWillUnmount
  * 

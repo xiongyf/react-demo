@@ -15,7 +15,7 @@ class CommentBox extends React.Component {
     }
 
     delectComment(index){
-        console.log('CommentBox: '+index);
+        // It's not recommended to modified the value directly which in state, so copy one
         const list=[...this.state.comments];
         list.splice(index,1)
         this.setState({
