@@ -6,12 +6,13 @@ class LikesButtun extends React.Component {
         this.state = {
             likes: 0
         }
-        this.onButtunClick=this.onButtunClick.bind(this);
+        //this.onButtunClick=this.onButtunClick.bind(this);
     }
 
-    onButtunClick(){
+    // Use arrow function to bind this
+    onButtunClick = () => {
         this.setState({
-            likes:this.state.likes+1
+            likes: this.state.likes + 1
         })
     }
 
