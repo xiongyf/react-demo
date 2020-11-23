@@ -1,16 +1,13 @@
 import React from 'react';
-import LikesButtun from './LikesButtun'
+import LikesButton from './LikesButton'
+
 class CommentList extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-
-        }
-
-
+        this.state = {}
     }
 
-    handleClick(index){
+    handleClick(index) {
         this.props.handleClick(index)
     }
 
@@ -18,11 +15,11 @@ class CommentList extends React.Component {
         return (
             <div>
                 <ul className="list-group mb-3">
-                    {this.props.comments.map((comment,index)=>(
+                    {this.props.comments.map((comment, index) => (
                         <li className="list-group-item" key={index}>
                             {/* bind 'this' when call the function */}
-                            <span onClick={this.handleClick.bind(this,index)}>{comment}</span>
-                            <span><LikesButtun></LikesButtun></span>
+                            <span onClick={this.handleClick.bind(this, index)}>{comment}</span>
+                            <span><LikesButton></LikesButton></span>
                         </li>
 
                     ))}
@@ -31,4 +28,5 @@ class CommentList extends React.Component {
         )
     }
 }
-export default CommentList
+
+export default CommentList;

@@ -1,42 +1,33 @@
-import React from 'react'
-import axios from 'axios';
+import React, {useState, useEffect} from 'react'
 
-class NameCard extends React.Component {
-    constructor(props){
-        super(props);
-        this.state={
-            
-        }
+export default function NameCard() {
+
+    const [loading, setLoading] = useState(false);
+    const [name, setName] = useState("");
+    const [tags, setTags] = useState([]);
+    const personId = '1';
+
+    useEffect(() => {
+        setLoading(true);
+        setName("Richard");
+        setTags(["Humour", "Gentle"]);
+        setLoading(false);
+    }, [personId]);
+
+    if (loading === true) {
+        return <p>Loading ...</p>
     }
 
-    componentDidMount(){
-        axios.get('http://localhost:3000/')
-        .then(res=>{
-                console.log(res.data)
-            }
-        )
-    }
+    return <div className="alert alert-success">
+        <h4 className="alert-heading">Name: {name}</h4>
 
-    render() {
+        <p>
+            {tags.map((tag, index) => (
+                <span key={index} className="badge badge-pill badge-primary">{tag}</span>
+            ))}
 
-       // const { name, phone, isHuman, tags } = this.props;
+        </p>
 
-        return (
-            <div className="alert alert-success">
-                <h4 className="alert-heading">{this.props.name}</h4>
-                <ul>
-                    <li>Phone: {this.props.phone}</li>
-                    <li>{this.props.isHuman ? 'Humanbeing' : "Alient"}</li></ul>
-                <hr />
-                <p>
-                    {this.props.tags.map((tag, index) => (
-                        <span key={index} className="badge badge-pill badge-primary">{tag}</span>
-                    ))}
-                    
-                </p>
+    </div>
 
-            </div>
-        )
-    }
 }
-export default NameCard

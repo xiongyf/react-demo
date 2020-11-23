@@ -4,22 +4,20 @@ import CommentList from './CommentList'
 class CommentBox extends React.Component {
     constructor(props) {
         super(props)
-
         this.state = {
-
             comments: []
         }
         // this.onCommentChange = this.onCommentChange.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
-        this.delectComment = this.delectComment.bind(this);
+        this.deleteComment = this.deleteComment.bind(this);
     }
 
-    delectComment(index){
+    deleteComment(index) {
         // It's not recommended to modified the value directly which in state, so copy one
-        const list=[...this.state.comments];
-        list.splice(index,1)
+        const list = [...this.state.comments];
+        list.splice(index, 1)
         this.setState({
-            comments:list
+            comments: list
         })
     }
 
@@ -30,8 +28,8 @@ class CommentBox extends React.Component {
             this.setState({
                 comments: [...this.state.comments, value],
 
-            })
-            this.textInput.value = ''
+            });
+            this.textInput.value = '';
         }
 
         event.preventDefault();// ban the default bahavior(jump to a paged)
@@ -53,8 +51,10 @@ class CommentBox extends React.Component {
                             className="form-control"
                             // onChange={this.onCommentChange}
                             // value={this.state.comment}
-                            ref={(textInput) => { this.textInput = textInput }}
-                            style={{width:'80%'}}
+                            ref={(textInput) => {
+                                this.textInput = textInput
+                            }}
+                            style={{width: '80%'}}
 
                         />
 
@@ -66,11 +66,11 @@ class CommentBox extends React.Component {
                         </button>
                     </div>
                 </form>
-                <CommentList comments={this.state.comments} handleClick={this.delectComment}/>
+                <CommentList comments={this.state.comments} handleClick={this.deleteComment}/>
             </div>
-
         )
     }
 
 }
+
 export default CommentBox
